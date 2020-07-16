@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+
+        // 输入:
+        // nums1 = [1,2,3,0,0,0], m = 3
+        // nums2 = [2,5,6],       n = 3
+
+        // 输出: [1,2,2,3,5,6]
+
+        // 画图,三个指针  画图 画图画图画图画图画图画图画图画图画图画图
+
+        // 想法
+        // 合并两个有序数组，是归并排序的一步
+        // 归并排序会开辟一个长度为nums1 + nums2的数组，用两个指针遍历两个数组，把小的放到新数组里
+        // 这里的 nums1 视为开辟的新数组，沿用归并排序的思路，用三个指针
+        // 从后开始遍历的好处
+        // 先比较较大的数，把大的数放到数组nums1的后面
+        // 如果先从较小的数比较，则需要把数组nums1的数往后挪一位，时间复杂度较高
+
+
+        var nums1 = [1, 2, 3, 0, 0, 0], nums2 = [2, 5, 6];
+
+        function test(nums1, m, nums2, n) {
+            let index1 = m - 1, index2 = n - 1, tail = m + n - 1;
+            while (index2 >= 0) {
+                // if (nums1[index1] < nums2[index2]) {
+                //     nums1[tail] = nums2[index2];
+                //     index2-- , tail--;
+                // } else {
+                //     nums1[tail] = nums2[index2]
+                //     index2-- , tail--
+                // }
+                if (nums1[index1] > nums2[index2]) {
+                    nums1[tail] = nums1[index1]
+                    index1--
+                    tail--
+                } else {
+                    nums1[tail] = nums2[index2]
+                    index2--
+                    tail--
+                }
+            }
+            console.log(nums1);
+        }
+
+        test(nums1, 3, nums2, 3)
+
+    </script>
+
+
+</body>
+
+</html>

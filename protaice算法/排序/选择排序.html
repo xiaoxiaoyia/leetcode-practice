@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+
+        //选择排序
+        // 选择排序就是先默认一个最大（小）的值，然后让其和数组中的值进行比较，
+        // 将数组中最大（小）值，与默认值位置交换，放置在数组首位或者末尾，然后进行第二圈循环
+
+        // 先取一个默认值,从数组第0位开始,内层循环主要是找到最大或者最小的值,找到后与默认位交换
+        // 然后第二遍外层循环的时候,默认位置就变成与第一位交换的那个位置,再进行循环, 找到最大或者最小,交换
+        // 重复上述步骤,
+
+        // let arr = [3, 4, 5, 7, 2, 1, 6];
+
+        // function compare(a, b) { // 比较函数
+        //     if (b < a) return true;
+        //     else return false;
+        // }
+
+        function exchange(arr, a, b) { // 将数组中的ab位置的值进行交换
+            let temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+
+        // function sort(arr) {
+        //     for (let i = 0; i < arr.length; i++) {
+        //         let maxIndex = 0;
+        //         for (let j = 0; j < arr.length - i; j++) {
+        //             if (compare(arr[maxIndex], arr[j])) {
+        //                 maxIndex = j;
+        //             }
+        //         }
+        //         exchange(arr, maxIndex, arr.length - 1 - i)
+        //     }
+        // }
+        // sort(arr)
+        // console.log(arr);
+
+
+
+        let arr = [3, 4, 5, 7, 2, 1, 6]
+
+        // function xuanze(arr) {
+        //     for (let i = 0; i < arr.length - 1; i++) {
+        //         let min = arr[i];
+        //         let index = i;
+        //         for (let j = i + 1; j < arr.length; j++) {
+        //             if (min > arr[j]) {
+        //                 min = arr[j]
+        //                 index = j;
+        //             }
+        //         }
+        //         exchange(arr, index, i)
+        //     }
+        // }
+
+
+        function xuanze(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                let temp = arr[i], index = i;
+                for (let j = 1; i < arr.length - 1; j++) {
+                    if (temp > arr[j]) {
+                        temp[i] = arr[j];
+                        index = j;
+                    }
+                }
+                exchange(arr, index, i)
+            }
+        }
+
+
+        xuanze(arr)
+        console.log(arr);
+
+    </script>
+</body>
+
+</html>

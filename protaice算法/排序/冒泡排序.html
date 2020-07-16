@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //排序第一种简单实现
+        // let arr = [3, 4, 5, 7, 2, 1];
+
+        // function getMin(arr) {
+        //     if (arr == null || arr.length == 0) return;
+        //     let index = -1;
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (arr[i] != null && arr[i] < arr[index] || arr[i] != null && index == -1) {
+        //             index = i;
+        //         }
+        //     }
+        //     let result = arr[index];
+        //     arr[index] = null;
+        //     return result;
+        // }
+
+        // function sort(arr) {
+        //     let newArr = new Array(arr.length);
+        //     for (let i = 0; i < newArr.length; i++) {
+        //         newArr[i] = getMin(arr);
+        //     }
+        //     return newArr;
+        // }
+        // console.log(sort(arr));
+
+
+
+        // 冒泡排序 当数组中的元素基本有序,用冒泡最好
+        // 冒泡排序，比较的是相邻的两个元素，如果第一位大于第二位，交换
+        // 对每一组的元素进行比较,从第一队到最后一对,这样最后的元素就是最大的数,
+        // 重复上面的步骤,除了最后一个
+        // 如果前面拍好了,则第二个for循环 - i 遍,
+        // 排序不是比较大小，而是数字的比较和交换
+        let arr = [3, 4, 5, 7, 2, 1, 6];
+
+        // function compare(a, b) { // 比较函数
+        //     if (b < a) return true;
+        //     else return false;
+        // }
+
+        function exchange(arr, a, b) { // 将数组中的ab位置的值进行交换
+            let temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+
+        // function sort(arr) {  //冒泡算法，也可以是别的算法
+        //     for (let i = 0; i < arr.length; i++) {
+        //         for (let j = 0; j < arr.length - 1 - i; j++) {
+        //             if (compare(arr[j], arr[j + 1])) {
+        //                 exchange(arr, j, j + 1)
+        //             }
+        //         }
+        //     }
+        // }
+        // sort(arr);
+        // console.log(arr);
+
+
+        // let arr = [3, 4, 5, 7, 2, 1, 6];
+        // function maopao(arr) {
+        //     for (let i = 0; i < arr.length; i++) {
+        //         for (let j = 0; j < arr.length - 1 - i; j++) {
+        //             if (arr[j] > arr[j + 1]) {
+        //                 let temp = arr[j];
+        //                 arr[j] = arr[j + 1];
+        //                 arr[j + 1] = temp;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // maopao(arr)
+        // console.log(arr);
+
+
+        // function maopao(arr) {
+        //     for (let i = 0; i < arr.length - 1; i++) {
+        //         for (let j = 0; j < arr.length - 1 - i; j++) {
+        //             if (arr[j] > arr[j + 1]) {
+        //                 exchange(arr, j, j + 1);
+        //             }
+        //         }
+        //     }
+        // }
+
+
+        function mapao(arr) {
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = 0; i < arr.length - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        exchange(arr, j, j + 1)
+                    }
+                }
+            }
+        }
+
+        maopao(arr)
+        console.log(arr);
+
+
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

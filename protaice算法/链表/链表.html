@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 链表：
+        // 1。 长度是可变的，随时可以增加和删除元素
+        // 2。 插入和删除元素的效率极其的高
+        // 3。 由于要存储下一个元素的地址，会增加额外的内存开销
+        // 4.  通过表表查询链表中的某个节点，效率极低，因此链表的下标遍历效率低
+
+
+
+
+
+        function node(val) {
+            this.val = val;
+            this.next = null;
+        }
+
+        let a = new node(1)
+        let b = new node(2)
+        let c = new node(3)
+        let d = new node(4)
+
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = null;
+
+
+        console.log(a.val);
+        console.log(a.next.val);
+        console.log(a.next.next.val);
+        console.log(a.next.next.next.val);
+
+    </script>
+
+</body>
+
+</html>

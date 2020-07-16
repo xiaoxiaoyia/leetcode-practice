@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+    <script>
+        //给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+
+        //示例 1:
+
+        // 输入: "abcabcbb"
+        // 输出: 3 
+        // 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+        // 示例 2:
+
+        // 输入: "bbbbb"
+        // 输出: 1
+        // 解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+        // 示例 3:
+
+        // 输入: "pwwkew"
+        // 输出: 3
+        // 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+        // 请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
+
+
+        // 解法1 
+        // 首先声明三个参数，一个是无重复最长长度，一个是当前的子串，一个是最终的最长子串
+        // 判断当前子串是否包含字母，如果不包含，将它拼接起来，并且判断长度是否大于之前判断的长度，如果大于，则说明有更长的子串形成，需要更新len和longestSubstring;如果包含了，说明当前元素和之前的元素有重复了，在这里我们找到重复元素第一次出现的索引，然后从它的后一位开始剪切这个字符串，将剪切后的字符串赋值给当前curSub，我这里如果你想要返回长度，就return len，如果你想要最长的无重复字符串，就return longestSubstring
+        // 如：abca这个子串，第一个a和最后一个a重复了，我们用indexOf拿到第一个a出现的索引，向后推一位即第二位开始剪切这个字符串，则剪切之后的为bca，此时可以拿着这个子串继续循环看是否后面元素有重复的。
+
+
+        // function lengthOfStr(str) {
+        //     if (!str.length) return 0;
+        //     let longStr = ''; //最长字串
+        //     let len = 0; // 长度
+        //     let curSub = ''; //当前
+        //     for (let i = 0; i < str.length; i++) {
+        //         if (!curSub.includes(str[i])) {
+        //             curSub += str[i];
+        //             if (curSub.length > len) {
+        //                 longStr = curSub;
+        //                 len = curSub.length;
+        //             }
+        //         } else {
+        //             curSub += str[i];
+        //             let index = curSub.indexOf(str[i]);
+        //             curSub = curSub.slice(index + 1)
+        //             console.log(curSub);
+        //         }
+        //     }
+        //     return longStr;
+        // }
+
+        // console.log(lengthOfStr(str));
+        let str = 'pwwkeftwx';
+        console.log(str.indexOf('r'));
+
+        function lengthOfStr(str) {
+            if (!str.length) return 0
+            let tmpStr = ''   // 每次循环找到的不含重复字符的子字符串
+            let maxStrLen = 0   // 最大不含重复字符的子字符串的长度
+            let len = str.length
+            let left = 0  // 不含重复字符的子字符串的左游标
+            for (let i = 0; i < len; i++) {
+                if (tmpStr.indexOf(str[i]) !== -1) {
+                    left += (str.slice(left, i).indexOf(str[i]) + 1)
+                    continue
+                }
+                tmpStr = str.slice(left, i + 1)
+                
+                maxStrLen = Math.max(maxStrLen, tmpStr.length)
+            }
+            return maxStrLen
+        }
+
+        console.log(lengthOfStr(str));
+    </script>
+</body>
+
+</html>

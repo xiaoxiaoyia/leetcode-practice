@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+
+        // 通过前序，中序，来构建树
+
+        function Node(value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+
+
+        function getTree(dlr, ldr) {
+            let DLR = dlr.split("");
+            let LDR = ldr.split("");
+
+            if (DLR.length !== LDR.length) throw new Error("报错");
+            if (DLR.length === 0) return null;
+
+            let leader = DLR[0];
+            let root = new Node(leader);
+
+            let index = LDR.indexOf(leader);
+            let DLRleft = DLR.slice(1, index + 1).join('');
+            let LDRleft = LDR.slice(0, index).join('');
+            root.left = getTree(DLRleft, LDRleft);
+
+            let DLRright = DLR.slice(index + 1).join('');
+            let LDRright = LDR.slice(index + 1).join('');
+            root.right = getTree(DLRright, LDRright);
+            return root;
+
+        }
+        let root1 = getTree("abcd", "cbda");
+        // let root2 = getTree("afkes", "kfase");
+        // console.log(root1, root2);
+
+
+        //袁宝老师，比较两棵二叉树 
+
+        // function diff(originRoot, newRoot) {
+        //     let result = [];
+        //     if (!originRoot && !newRoot) {
+        //         return []
+        //     }
+        //     else if (!originRoot && newRoot) {
+        //         result.push({
+        //             type: '新增',
+        //             originNode: originRoot,
+        //             newNode: newRoot
+        //         })
+        //     }
+        //     else if (originRoot && !newRoot) {
+        //         result.push({
+        //             type: '删除',
+        //             originNode: originRoot,
+        //             newNode: newRoot,
+        //         })
+        //     }
+        //     else if (originRoot.value !== newRoot.value) {
+        //         result.push({
+        //             type: '修改',
+        //             originNode: originRoot,
+        //             newNode: newRoot
+        //         })
+
+        //         let result1 = diff(originRoot.left, newRoot.left)
+        //         let result2 = diff(originRoot.right, newRoot.right)
+        //         result = [...result, ...result1, ...result2]
+        //     } else {
+        //         let result1 = diff(originRoot.left, newRoot.left)
+        //         let result2 = diff(originRoot.right, newRoot.right)
+        //         result = [...result, ...result1, ...result2]
+        //     }
+
+        //     return result;
+
+        // }
+
+        // let resultxx = diff(root1, root2);
+        // console.log(resultxx);
+
+
+
+        // 大厂哥 比较二叉树
+
+        // function compare(root1, root2) {
+        //     if (root1 === root2) return true; // 同一棵树
+        //     if (!root1 && root2 == null || root1 == null && root2 != null) return false;
+        //     if (root1.value !== roo2.value) return false;
+        //     let leftBool = compare(root1.left, roo2.right);
+        //     let rightBool = compare(root1.right, root2.right);
+        //     return leftBool && rightBool;
+        // }
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

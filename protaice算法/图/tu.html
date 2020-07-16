@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        // 构件图
+        function Node(value) {
+            this.value = value;
+            this.neighbors = [];
+        }
+
+        let a = new Node('a')
+        let b = new Node('b')
+        let c = new Node('c')
+        let d = new Node('d')
+        let e = new Node('e')
+
+        a.neighbors.push(b, c, e)
+        b.neighbors.push(a, c, d)
+        c.neighbors.push(a, b)
+        d.neighbors.push(b, e)
+        e.neighbors.push(a, e)
+
+        console.log(a);
+
+
+        // 图的深度优先遍历
+        // finded表示已经看过的节点数组
+        // function deepSearch(node, targetValue, finded) {
+        //     // 如果finded中吧包含node,说明，已经看过了此节点则直接返回
+        //     if (finded.includes(node)) return false;
+        //     if (node.value === targetValue) return true;
+        //     finded.push(node); //将已经看过的节点加进去
+        //     for (let i = 0; i < node.neighbors.length; i++) {
+        //         if (deepSearch(node.neighbors[i], targetValue, finded)) {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+        // console.log(deepSearch(a, 'f', []));
+
+
+
+        // 图的广搜
+        // 广搜。可能有一群节点
+        // function breadSearch(nodes, targetValue, finded) {
+        //     if (nodes.length === 0) return false;
+             
+        // }
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

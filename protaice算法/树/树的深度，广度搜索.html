@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+        function Node(value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+        let a = new Node('a')
+        let b = new Node('b')
+        let c = new Node('c')
+        let d = new Node('d')
+        let e = new Node('e')
+
+        a.left = b;
+        a.right = e;
+
+        b.left = c;
+        b.right = d;
+
+
+
+        
+
+
+        //二叉树的深度优先搜索  
+        //对于二叉树来说，树的深搜和前序遍历一样，更适合搜索未知
+
+        // 根的左边，根左边的左边，一直往下找，找到正确的就行了，是看深度，
+
+
+        // function deepFirstSearch(root, targetValue) {
+        //     if (!root) return;
+        //     if (root.value === targetValue) return true;
+        //     let left = deepFirstSearch(root.left, targetValue);
+        //     let right = deepFirstSearch(root.right, targetValue);
+        //     return left || right;
+        // }
+        // var result = deepFirstSearch(a, 'c')
+        // console.log(result);
+
+
+        //二叉树的广度优先搜索 更适合搜索局域
+        // 将树的一层一层看，看根的左，再看根的右，再看根左的左，再看根左的右，根，主要是一层一层看
+
+
+        // nodes表示这一层的所有节点，是个数组 
+        // function breadthFirstSearch(nodes, targetValue) {
+        //     if (nodes.length === 0) return;
+        //     let next = [];
+        //     for (let i = 0; i < nodes.length; i++) {
+        //         if (nodes[i].value === targetValue) {
+        //             return true;
+        //         } else {
+        //             if (nodes[i].left) {
+        //                 next.push(nodes[i].left);
+        //             }
+        //             if (nodes[i].right) {
+        //                 next.push(nodes[i].right);
+        //             }
+        //         }
+        //     }
+        //     console.log(next);
+        //     return breadthFirstSearch(next, targetValue);
+        // }
+
+        // let result = breadthFirstSearch([a], 'c')
+        // console.log(result);
+        
+
+        
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

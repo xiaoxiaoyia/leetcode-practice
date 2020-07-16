@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        function isNum(result) {
+            // let num = new RegExp(/\s+/g);
+            // if (isNaN(result)) {
+            //     if (result < Math.pow(-2, 31) || result > Math.pow(2, 31) - 1) {
+            //         return result < Math.pow(-2, 31) ? Math.pow(-2, 31) : Math.pow(2, 31) - 1
+            //     } else if (num.test(result)) {
+            //         return result.replace(/\s+/g, "")
+            //     }
+            //     return result;
+            // }
+
+            let newResult = parseInt(result, 10);
+            if (isNaN(newResult)) {
+                return 0;
+            } else if (newResult < Math.pow(-2, 31) || newResult > Math.pow(2, 31) - 1) {
+                return newResult < Math.pow(-2, 31) ? Math.pow(-2, 31) : Math.pow(2, 31) - 1
+            } else {
+                return newResult
+            }
+        }
+
+        let newResult = isNum('4193 with words')
+
+        console.log(newResult);
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

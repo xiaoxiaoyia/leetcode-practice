@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function node(value) {
+            this.value = value;
+            this.next = null;
+        }
+
+        let a = new node(1)
+        let b = new node(2)
+        let c = new node(3)
+        let d = new node(4)
+
+        a.next = b;
+        b.next = c;
+        c.next = d;
+        d.next = null;
+
+        //递归遍历链表
+        function link(root) {
+            if (root == null) return;
+            console.log(root.value);
+            link(root.next)
+        }
+        link(a)
+
+        //递归遍历数组 不推荐，数组还是用循环遍历的好 
+        function linkArr(arr, i) {
+            if (arr = null || arr.length == i) return;
+            console.log(arr[i]);
+            linkArr(arr, i + 1)
+        }
+        linkArr(arr, 0)
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

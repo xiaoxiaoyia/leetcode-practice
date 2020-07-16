@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        //插入排序
+
+        // function exchange(arr, a, b) {
+        //     let temp = arr[a];
+        //     arr[a] = arr[b];
+        //     arr[b] = temp;
+        // }
+
+        // function insert(arr) {
+        //     if (arr == null && arr.length == 0) return [];
+        //     let preIndex, current;
+        //     for (let i = 1; i < arr.length; i++) {
+        //         preIndex = i - 1;
+        //         current = arr[i]
+        //         while (preIndex >= 0 && arr[preIndex] > current) {
+        //             arr[preIndex + 1] = arr[preIndex]
+        //             preIndex--;
+        //         }
+        //         arr[preIndex + 1] = current;
+        //     }
+        //     return arr;
+        // }
+        // let arr = [8, 2, 4, 32, 545, 213, 54, 65];
+
+        // function insert(arr) {
+        //     if (arr == null && arr.length == 0) return [];
+        //     let leader, current;
+        //     for (let i = 1; i < arr.length; i++) {
+        //         leader = i - 1;
+        //         current = arr[i];
+        //         while (leader >= 0 && arr[leader] > current) {
+        //             arr[leader + 1] = arr[leader];
+        //             leader--;
+        //         }
+        //         arr[leader + 1] = current;
+        //     }
+        //     return arr;
+        // }
+
+        // console.log(insert(arr));
+
+        let arr = [6, 1, 4, 2, 3, 5]
+        function insert(arr) {
+            for (let i = 1; i < arr.length; i++) {
+                if (arr[i] < arr[i - 1]) {
+                    let temp = arr[i];
+                    for (let j = i; j >= 0; j--) {
+                        if (j > 0 && arr[j - 1] > temp) {
+                            arr[j] = arr[j - 1]
+                        }
+                        else {
+                            arr[j] = temp;
+                            break;
+                        }
+                    }
+                }
+                console.log(arr);
+            }
+        }
+        insert(arr)
+
+            // (6)[1, 6, 4, 2, 3, 5]
+            // (6)[1, 4, 6, 2, 3, 5]
+            // (6)[1, 2, 4, 6, 3, 5]
+            // (6)[1, 2, 3, 4, 6, 5]
+            // (6)[1, 2, 3, 4, 5, 6]
+
+
+
+    </script>
+
+
+</body>
+
+</html>

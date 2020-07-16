@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // 给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。
+
+        var reverse = function (x) {
+            let newX;
+            let arr = String(x).split('');
+            if (arr.indexOf('-') != -1) {
+                let num = arr.splice(arr.indexOf('-'), 1);
+                newX = Number(num.concat(arr.reverse()).join(''));
+
+            } else if (arr.indexOf('0') === arr.length - 1) {
+                let num = arr.splice(arr.length - 1);
+                newX = Number(arr.reverse().join(''))
+            } else {
+                newX = Number(arr.reverse().join(''))
+            }
+            if (newX > Math.pow(2, 31) - 1 || newX < Math.pow(2, 31) * -1) return 0;
+            return newX;
+        };
+
+        let xx = reverse(1534236469);
+        console.log(xx);
+    </script>
+
+
+</body>
+
+</html>

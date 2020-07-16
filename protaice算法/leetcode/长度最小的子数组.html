@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 209题
+        // 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。
+        // 如果不存在符合条件的子数组，返回 0
+
+        // 滑动窗口
+
+        var s = 9, nums = [2, 3, 1, 2, 4, 3]
+
+        // function test(s, nums) {
+        //     let arr = []
+        //     var len = nums.length;
+        //     let min = len + 1;
+        //     let sum = 0;
+
+        //     for (let i = 0; i < len; i++) {
+        //         arr.push(nums[i]);
+        //         sum += nums[i];
+        //         while (sum >= s) {
+        //             sum -= nums[0];
+        //             min = Math.min(arr.length, min);
+        //             arr.shift();
+        //         }
+        //     }
+        //     return min == len ? 0 : min;
+        // }
+
+
+        // 2 双指针维护下标
+        function test(s, nums) {
+            let row = 0, len = nums.length, min = len  + 1, sum = 0;
+            for (let i = 0; i < len; i++) {
+                sum += nums[i]
+                // arr.push(nums[i]) 在这里等同于i++
+                while (sum >= s) {
+                    sum -= nums[row]
+                    min = Math.min(i - row + 1, min) // arr.length等同于i-row+1
+                    console.log(i, row);
+                    row++ // arr.shift() 等同于 row++
+                }
+            }
+            return min == len + 1 ? 0 : min
+
+        }
+
+        console.log(test(s, nums));
+
+    </script>
+
+</body>
+
+</html>

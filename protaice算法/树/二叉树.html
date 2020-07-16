@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+
+        // function Node(value) {
+        //     this.value = value;
+        //     this.children = [];
+        // }
+
+        // let a = new Node('a')
+        // let b = new Node('b')
+        // let c = new Node('c')
+        // let d = new Node('d')
+        // let e = new Node('e')
+
+        // a.children.push(b, e)
+        // b.children.push(c, d)
+        // console.log(a);
+
+        function Node(value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+
+        let a = new Node('a')
+        let b = new Node('b')
+        let c = new Node('c')
+        let d = new Node('d')
+        let e = new Node('e')
+
+        a.left = b;
+        a.right = e;
+
+        b.left = c;
+        b.right = d;
+
+
+        // 前序遍历
+        // function DLR(root) {
+        //     if (!root) return;
+        //     console.log(root.value);
+        //     DLR(root.left)
+        //     DLR(root.right)
+        // }
+        // DLR(a)
+
+        // 中序遍历
+        // function LDR(root) {
+        //     if (!root) return;
+        //     LDR(root.left)
+        //     console.log(root.value);
+        //     LDR(root.right)
+        // }
+        // LDR(a)
+
+        //后续遍历
+        // function LRD(root) {
+        //     if (!root) return;
+        //     LRD(root.right)
+        //     LRD(root.left)
+        //     console.log(root.value);
+        // }
+        // LRD(a)
+
+        // console.log(a);
+
+
+        // 求树的深度
+        // function getDeep(root) {
+        //     if (!root) return 0;
+        //     return Math.max(getDeep(root.left), getDeep(root.right)) + 1;
+        // }
+
+        // console.log(getDeep(a));
+
+
+        // 根据前序和中序写后续
+        function getTree(dlr, ldr) {
+            let DLR = dlr.split("");
+            let LDR = ldr.split("");
+
+            if (DLR.length !== LDR.length) throw new Error("报错");
+            if (DLR.length === 0) return null;
+
+            let leader = DLR[0];
+            let root = new Node(leader);
+
+            let index = LDR.indexOf(leader);
+            let DLRleft = DLR.slice(1, index + 1).join('');
+            let LDRleft = LDR.slice(0, index).join('');
+            root.left = getTree(DLRleft, LDRleft);
+
+            let DLRright = DLR.slice(index + 1).join('');
+            let LDRright = LDR.slice(index + 1).join('');
+            root.right = getTree(DLRright, LDRright);
+            return root;
+        }
+
+        let root = getTree('abcd', 'cbda')
+        console.log(root);
+
+        function LRD(root) {
+            if (!root) return;
+            LRD(root.left);
+            LRD(root.right);
+            console.log(root.value);
+        }
+        LRD(root)
+
+
+
+
+        //二叉树的深度，广度优先搜索
+
+    </script>
+
+
+</body>
+
+</html>

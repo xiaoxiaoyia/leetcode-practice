@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        // function Node(value, next) {
+        //     this.value = value;
+        //     this.next = null;
+        // }
+
+        // let a = new Node('a')
+        // let b = new Node('b')
+        // let c = new Node('c')
+        // let d = new Node('d')
+
+
+        // a.next = b;
+        // b.next = c;
+        // c.next = d;
+
+        // // 链表打印  穷举法
+        // function print(root) {
+        //     if (!root) return;
+        //     while (root) {
+        //         console.log(root.value);
+        //         root = root.next;
+        //     }
+        // }
+        // print(a)
+
+
+        // 链表打印 分治法 递归打印
+        // function print(root) {
+        //     var node = root;
+        //     if (node) {
+        //         console.log(node.value);
+        //         print(root.next)
+        //     }
+        // }
+        // print(a)
+
+
+        //获取链表长度 穷举
+        // function getLen(root) {
+        //     let i = 0;
+        //     while (root) {
+        //         i++;
+        //         root = root.next;
+        //     }
+        //     return i;
+        // }
+
+        //获取链表长度 分治，递归
+        // function getLen(root) {
+        //     if (!root) return 0; // 链表没有节点
+        //     if (root) {
+        //         return 1 + getLen(root.next)
+        //     }
+        // }
+        // console.log(getLen(a));
+
+
+
+
+
+        // 通过下标获取某个数据 
+        // 统计它递归了多少次
+        // function getNode(root, index) {
+        //     if (!root) return null;
+        //     // 判断某个节点是否为要查找的节点，node 表示某个节点，i 表示该节点是第几个节点
+        //     function _getVal(node, i) {
+        //         if (i === index) return node;
+        //         return _getVal(node.next, i + 1)
+        //     }
+        //     return _getVal(root, 0)
+        // }
+        // console.log(getNode(a, 1));
+
+        // function getNode(root, index) {
+        //     //写一个辅助函数
+        //     function _getVal(node, i) {
+        //         if (index === i) return node;
+        //         return _getVal(node.next, i + 1)
+        //     }
+
+        //     return _getVal(root, 0)
+        // }
+
+        // getNode(a, 2)
+
+
+
+        //通过下标设置链表中某个节点的值
+        // function setVal(root, index, value) {
+        //     function _setVal(node, i) {
+        //         if (!node) return null;
+        //         if (i === index) {
+        //             node.value = value;
+        //         } else {
+        //             _setVal(node.next, i + 1)
+        //         }
+        //     }
+        //     _setVal(root, index)
+        // }
+        // setVal(b, 1, 'nihao')
+
+
+
+
+
+        // 在链表的某一个节点之后加入新的节点
+        // function insert(node, newValue) {
+        //     var newNode = new Node(newValue);
+        //     //这两行注意顺序，
+        //     newNode.next = node.next;
+        //     node.next = newNode;
+        // }
+        // insert(a, 'd')
+        // function print(root) {
+        //     var node = root;
+        //     if (node) {
+        //         console.log(node.value);
+        //         print(root.next)
+        //     }
+        // }
+        // print(a)
+
+
+
+        // 在链表的末尾加入一个新节点
+        // function push(root, newValue) {
+        //     if (root.next == null) {
+        //         let newNode = new Node(newValue);
+        //         root.next = newNode;
+        //     } else {
+        //         push(root.next, newValue)
+        //     }
+        // }
+        // push(a, 'd')
+
+        // 删除链表的一个节点
+        // function removeNode(root, nodeValue) {
+        //     if (!root || !root.next) return; //无法删除的情况
+        //     if (root.next.value === nodeValue) {
+        //         root.next = root.next.next;
+        //     } else {
+        //         removeNode(root.next, nodeValue)
+        //     }
+        // }
+        // removeNode(a, 'b')
+        // function print(root) {
+        //     var node = root;
+        //     if (node) {
+        //         console.log(node.value);
+        //         print(root.next)
+        //     }
+        // }
+        // print(a)
+
+
+
+        // 链表逆置
+
+        // function reverse(root) {
+        //     if (!root || root.next == null) return;
+        //     if (root.next.next === null) { //两个节点
+        //         let temp = root.next;  //保存返回的节点
+        //         root.next.next = root;
+        //         root.next = null;
+        //         return temp
+        //     } else {
+        //         let temp = reverse(root.next); //先将最前面两个元素之后的链表倒叙
+        //         root.next.next = root;
+        //         root.next = null;
+        //         return temp;
+        //     }
+        // }
+
+        // function print(root) {
+        //     var node = root;
+        //     if (node) {
+        //         console.log(node.value);
+        //         print(root.next)
+        //     }
+        // }
+        // let newlian = reverse(a)
+        // print(newlian)
+
+
+        // function reverse(root) {
+        //     if (!root || root.next == null) return;
+        //     if (root.next.next === null) {
+        //         let temp = root.next;
+        //         root.next.next = root;
+        //         root.next = null;
+        //         return temp;
+        //     } else {
+        //         let temp = reverse(root.next);
+        //         root.next.next = root;
+        //         root.next = null;
+        //         return temp;
+        //     }
+        // }
+        // print(a)
+        // let newLian = reverse(a);
+        // function print(root) {
+        //     var node = root;
+        //     if (node) {
+        //         console.log(node.value);
+        //         print(root.next)
+        //     }
+        // }
+        // print(newLian)
+        // function find(root, index) {
+        //     function _getVal(node, i) {
+        //         if (i === index) return node;
+        //         else return _getVal(node.next, i + 1)
+        //     }
+        //     return _getVal(root, 0)
+        // }
+        // console.log(find(newLian, 1));
+
+
+        // 遍历链表
+
+
+        // function Node(value, next) {
+        //     this.value = value;
+        //     this.next = null;
+        // }
+
+        // let a = new Node('a')
+        // let b = new Node('b')
+        // let c = new Node('c')
+        // let d = new Node('d')
+
+
+        // a.next = b;
+        // b.next = c;
+        // c.next = d;
+        // 遍历打印，分治法
+        // function print(root) {
+        //     if (!root) return;
+        //     if (root) {
+        //         console.log(root.value);
+        //         print(root.next)
+        //     }
+        // }
+        // 遍历打印，穷举法
+        // function print(root) {
+        //     if (!root) return;
+        //     while (root) {
+        //         console.log(root.value);
+        //         root = root.next
+        //     }
+        // }
+
+
+        //获取链表长度 分治递归
+        // function getLen(root) {
+        //     let i = 0;
+        //     if (!root) return 0;
+        //     if (root) {
+        //         i++;
+        //         return 1 + getLen(root.next);
+        //     }
+        // }
+        // 穷举
+        // function getLen(root) {
+        //     let i = 0;
+        //     while (root) {
+        //         i++;
+        //         root = root.next
+        //     }
+        //     return i;
+        // }
+
+        //通过下标获取链表中的某个数据  
+        // function getNode(root, index) {
+
+        //     function _getVal(node, i) {
+        //         if (index === i) return node;
+        //         return _getVal(root.next, i + 1)
+        //     }
+
+        //     return _getVal(a, 0)
+        // }
+
+        // console.log(getNode(a, 1));
+
+
+
+        // 通过下标设置链表中的某个数据
+        // function setVal(root, index, value) {
+        //     if (!root) return;
+        //     function _setVal(node, i) {
+        //         if (index === i) {
+        //             node.value = value;
+        //         } else {
+        //             _setVal(node.next, i + 1)
+        //         }
+        //     }
+        //     return _setVal(root, 0)
+        // }
+        // setVal(a, 2, 'hhell')
+        // print(a)
+
+
+        //在链表的某一个节点之后加入一个新的节点
+        // function insert(root, newValue) {
+        //     let newNode = new Node(newValue);
+        //     newNode.next = root.next;
+        //     root.next = newNode;
+        // }
+        // insert(a, 'e')
+        // print(a)
+
+
+        //在链表末尾加入一个新的节点
+        // function insetAfter(node, newValue) {
+        //     if (node.next == null) {
+        //         let newNode = new Node(newValue);
+        //         newNode.next = null;
+        //         node.next = newNode;
+        //     } else {
+        //         insetAfter(node.next, newValue)
+        //     }
+        // }
+        // insetAfter(a, 'e')
+        // print(a)
+
+
+        //删除一个链表节点
+        // function deleteNode(root, index) {
+        //     if (!root || root.next == null) return;
+        //     function _del(node, i) {
+        //         if (index === i) {
+        //             node.value = node.next.value;
+        //             node.next = node.next.next;
+        //         } else {
+        //             _del(node.next, i + 1)
+        //         }
+        //     }
+        //     return _del(root, 0)
+
+        // }
+        // deleteNode(a, 1)
+        // print(a)
+
+
+        // 链表逆置
+        // function reverse(root) {
+        //     if (!root || root.next == null) return;
+        //     if (root.next.next == null) {
+        //         let temp = root.next;
+        //         root.next.next = root;
+        //         root.next = null;
+        //         return temp
+        //     } else {
+        //         let temp = reverse(root.next);
+        //         root.next.next = root;
+        //         root.next = null;
+        //         return temp
+        //     }
+        // }
+
+        // let newLian = reverse(a);
+        // print(newLian)
+
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

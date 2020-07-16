@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // [3,2,1,5,6,4] 和 k = 2
+        // var arr = [3, 2, 1, 5, 6, 4]
+        var arr = [3, 2, 3, 1, 2, 4, 5, 5, 6]
+
+        function test(arr, k) {
+
+            function _quick(arr, start, end) {
+                if (start >= end || start > arr.length - 1) return;
+                let low = start, high = end, leader = arr[end];
+                while (low < high) {
+                    if (low < high && arr[low] <= leader) low++;
+                    arr[high] = arr[low];
+                    if (low < high && arr[high] >= leader) high--;
+                    arr[low] = arr[high]
+                }
+                arr[low] = leader;
+                _quick(arr, start, low - 1);
+                _quick(arr, low + 1, end)
+            }
+
+            _quick(arr, 0, arr.length - 1)
+
+            return arr[arr.length - k]
+        }
+
+        // test(arr,2)
+        console.log(test(arr, 4));
+        console.log(arr);
+    </script>
+
+
+
+
+</body>
+
+</html>
